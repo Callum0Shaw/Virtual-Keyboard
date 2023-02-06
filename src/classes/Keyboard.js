@@ -81,7 +81,8 @@ export default class Keyboard {
     });
     // add keyboard event
     document.querySelector('body').addEventListener('keydown', (e) => {
-      console.log(e.key);
+      const element = document.querySelector(`*:contains('${e.key}')`);
+      console.log(element);
     });
   }
 }
