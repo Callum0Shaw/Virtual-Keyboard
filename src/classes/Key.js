@@ -6,4 +6,9 @@ export default class Key {
     this.caps = caps;
     this.html = `<button class="reg-key ${this.main}">${this.main}</button>`;
   }
+
+  addEventListener() {
+    const textArea = document.querySelector('.textArea');
+    textArea.value += this.main;
+  }
 }
