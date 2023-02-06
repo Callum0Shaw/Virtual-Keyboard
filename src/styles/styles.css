@@ -128,6 +128,12 @@ button:active {
   border-bottom: 1px solid var(--highlight);
   margin-top: 2px;
 }
-.space {
+
+.buttonActive {
+  background-color: var(--dark-light);
+  border-bottom: 1px solid var(--highlight);
+  margin-top: 2px;
+}
+.Space {
   width: 40%;
 }

@@ -10,8 +10,7 @@ function appendToFrontOfBody(html) {
 
 function getSpecialAction(key) {
   const textArea = document.querySelector('.textarea');
-  const regKeys = document.querySelectorAll('.reg-key');
-  const position = textArea.selectionStart;
+  let position = textArea.selectionStart;
   switch (key) {
     case 'del':
       textArea.value = textArea.value.slice(0, position) + textArea.value.slice(position + 1);
@@ -33,10 +32,12 @@ function getSpecialAction(key) {
       textArea.value += ' ';
       break;
     case 'up':
-
+      position = textArea.value.lastIndexOf('\n', position - 1);
+      textArea.setSelectionRange(position, position);
       break;
     case 'down':
-
+      position = textArea.value.indexOf('\n', textArea.selectionEnd) + 1 || textArea.value.length;
+      textArea.setSelectionRange(position, position);
       break;
     case 'left':
       textArea.focus();

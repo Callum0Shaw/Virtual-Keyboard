@@ -19,7 +19,7 @@ export default class Keyboard {
       if (el.type === 'special') {
         this.keys.push(new SpecialKey(el.main, el.row, el.class));
       } else {
-        this.keys.push(new Key(el.main, el.row, el.shift, el.class));
+        this.keys.push(new Key(el.main, el.row, el.class, el.shift));
       }
     });
   }
@@ -51,7 +51,7 @@ export default class Keyboard {
     // add mouseclick events
     this.keys.forEach((key) => {
       const button = document.querySelector(`.${key.class || key.main}`);
-      if (key.main === 'lShift' || key.main === 'rShift') {
+      if (key.main === 'Shift') {
         return button.addEventListener('click', () => {
           keyElements.forEach((el) => {
             const focusedKey = this.keys.find((x) => (
@@ -81,8 +81,11 @@ export default class Keyboard {
     });
     // add keyboard event
     document.querySelector('body').addEventListener('keydown', (e) => {
-      const element = document.querySelector(`*:contains('${e.key}')`);
-      console.log(element);
+      e.preventDefault();
+      const element = document.querySelector(`.${e.code}`);
+      element.click();
+      element.classList.add('buttonActive');
+      setTimeout(() => element.classList.remove('buttonActive'), 200);
     });
   }
 }

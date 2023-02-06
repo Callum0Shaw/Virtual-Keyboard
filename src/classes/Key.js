@@ -1,9 +1,9 @@
 export default class Key {
-  constructor(main, row, shift, cssClass = false) {
+  constructor(main, row, cssClass, shift) {
     this.main = main;
     this.row = row;
     this.shift = shift;
-    this.class = cssClass || main;
+    this.class = cssClass;
     this.html = `<button class="reg-key ${this.class}">${this.main}</button>`;
   }
 
