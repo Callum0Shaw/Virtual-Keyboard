@@ -32,11 +32,15 @@ export default class Keyboard {
       if (cur.row !== row) {
         row = cur.row;
         const newRowHtml = helper.createRowHtml(row);
+
         return `${acc}${newRowHtml}${cur.html}`;
       }
+
       return `${acc}${cur.html}`;
     }, '');
+
     keyboardHtml += `${keysHtml}</div>`;
+
     helper.appendToFrontOfBody(keyboardHtml);
   }
 }
