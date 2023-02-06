@@ -8,4 +8,46 @@ function appendToFrontOfBody(html) {
   document.querySelector('body').insertAdjacentHTML('afterbegin', html);
 }
 
-export { createRowHtml, appendToFrontOfBody };
+function getSpecialAction(key) {
+  const textArea = document.querySelector('.textarea');
+  const regKeys = document.querySelectorAll('.reg-key');
+  const position = textArea.selectionStart;
+  switch (key) {
+    case 'del':
+      textArea.value = textArea.value.slice(0, position) + textArea.value.slice(position + 1);
+      textArea.focus();
+      textArea.setSelectionRange(position, position);
+      break;
+    case 'tab':
+      textArea.value += '  ';
+      break;
+    case 'backspace':
+      textArea.value = textArea.value.slice(0, position - 1) + textArea.value.slice(position);
+      textArea.focus();
+      textArea.setSelectionRange(position - 1, position - 1);
+      break;
+    case 'enter':
+      textArea.value += '\n';
+      break;
+    case 'space':
+      textArea.value += ' ';
+      break;
+    case 'up':
+
+      break;
+    case 'down':
+
+      break;
+    case 'left':
+      textArea.focus();
+      textArea.setSelectionRange(position - 1, position - 1);
+      break;
+    case 'right':
+      textArea.focus();
+      textArea.setSelectionRange(position + 1, position + 1);
+      break;
+    default:
+      break;
+  }
+}
+export { createRowHtml, appendToFrontOfBody, getSpecialAction };

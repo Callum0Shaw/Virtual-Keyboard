@@ -5,43 +5,43 @@ import * as helper from './lib/helpers.js';
 /** * Keys ** */
 const engKeys = new Map([
   ['`', {
-    main: '`', shift: '¬', row: 0, type: 'regular', caps: false,
+    main: '`', shift: '¬', row: 0, type: 'regular', caps: false, class: 'backtick',
   }],
   ['1', {
-    main: '1', shift: '!', row: 0, type: 'regular', caps: false,
+    main: '1', shift: '!', row: 0, type: 'regular', caps: false, class: 'one',
   }],
   ['2', {
-    main: '2', shift: '"', row: 0, type: 'regular', caps: false,
+    main: '2', shift: '"', row: 0, type: 'regular', caps: false, class: 'two',
   }],
   ['3', {
-    main: '3', shift: '£', row: 0, type: 'regular', caps: false,
+    main: '3', shift: '£', row: 0, type: 'regular', caps: false, class: 'three',
   }],
   ['4', {
-    main: '4', shift: '$', row: 0, type: 'regular', caps: false,
+    main: '4', shift: '$', row: 0, type: 'regular', caps: false, class: 'four',
   }],
   ['5', {
-    main: '5', shift: '%', row: 0, type: 'regular', caps: false,
+    main: '5', shift: '%', row: 0, type: 'regular', caps: false, class: 'five',
   }],
   ['6', {
-    main: '6', shift: '^', row: 0, type: 'regular', caps: false,
+    main: '6', shift: '^', row: 0, type: 'regular', caps: false, class: 'six',
   }],
   ['7', {
-    main: '7', shift: '&', row: 0, type: 'regular', caps: false,
+    main: '7', shift: '&', row: 0, type: 'regular', caps: false, class: 'seven',
   }],
   ['8', {
-    main: '8', shift: '*', row: 0, type: 'regular', caps: false,
+    main: '8', shift: '*', row: 0, type: 'regular', caps: false, class: 'eight',
   }],
   ['9', {
-    main: '9', shift: '(', row: 0, type: 'regular', caps: false,
+    main: '9', shift: '(', row: 0, type: 'regular', caps: false, class: 'nine',
   }],
   ['0', {
-    main: '0', shift: ')', row: 0, type: 'regular', caps: false,
+    main: '0', shift: ')', row: 0, type: 'regular', caps: false, class: 'zero',
   }],
   ['-', {
-    main: '-', shift: '_', row: 0, type: 'regular', caps: false,
+    main: '-', shift: '_', row: 0, type: 'regular', caps: false, class: 'hyphen',
   }],
   ['=', {
-    main: '=', shift: '+', row: 0, type: 'regular', caps: false,
+    main: '=', shift: '+', row: 0, type: 'regular', caps: false, class: 'equal',
   }],
   ['del', { main: 'del', row: 0, type: 'special' }],
   ['tab', { main: 'tab', row: 1, type: 'special' }],
@@ -76,10 +76,10 @@ const engKeys = new Map([
     main: 'p', shift: 'P', row: 1, type: 'regular', caps: true,
   }],
   ['[', {
-    main: '[', shift: '{', row: 1, type: 'regular', caps: false,
+    main: '[', shift: '{', row: 1, type: 'regular', caps: false, class: 'openBracket',
   }],
   [']', {
-    main: ']', shift: '}', row: 1, type: 'regular', caps: false,
+    main: ']', shift: '}', row: 1, type: 'regular', caps: false, class: 'closeBracket',
   }],
   ['backspace', { main: 'backspace', row: 1, type: 'special' }],
   ['capsLock', { main: 'capsLock', row: 2, type: 'special' }],
@@ -111,18 +111,18 @@ const engKeys = new Map([
     main: 'l', shift: 'L', row: 2, type: 'regular', caps: true,
   }],
   [';', {
-    main: ';', shift: ':', row: 2, type: 'regular', caps: false,
+    main: ';', shift: ':', row: 2, type: 'regular', caps: false, class: 'colon',
   }],
   ['\'', {
-    main: '\'', shift: '@', row: 2, type: 'regular', caps: false,
+    main: '\'', shift: '@', row: 2, type: 'regular', caps: false, class: 'quote',
   }],
   ['#', {
-    main: '#', shift: '~', row: 2, type: 'regular', caps: false,
+    main: '#', shift: '~', row: 2, type: 'regular', caps: false, class: 'hashtag',
   }],
   ['enter', { main: 'enter', row: 2, type: 'special' }],
   ['lShift', { main: 'lShift', row: 3, type: 'special' }],
   ['\\', {
-    main: '\\', shift: '|', row: 3, type: 'regular', caps: false,
+    main: '\\', shift: '|', row: 3, type: 'regular', caps: false, class: 'backslash',
   }],
   ['z', {
     main: 'z', shift: 'Z', row: 3, type: 'regular', caps: false,
@@ -146,13 +146,13 @@ const engKeys = new Map([
     main: 'm', shift: 'M', row: 3, type: 'regular', caps: false,
   }],
   [',', {
-    main: ',', shift: '<', row: 3, type: 'regular', caps: false,
+    main: ',', shift: '<', row: 3, type: 'regular', caps: false, class: 'comma',
   }],
   ['.', {
-    main: '.', shift: '>', row: 3, type: 'regular', caps: false,
+    main: '.', shift: '>', row: 3, type: 'regular', caps: false, class: 'fullstop',
   }],
   ['/', {
-    main: '/', shift: '?', row: 3, type: 'regular', caps: false,
+    main: '/', shift: '?', row: 3, type: 'regular', caps: false, class: 'forwardslash',
   }],
   ['up', { main: 'up', row: 3, type: 'special' }],
   ['rShift', { main: 'rShift', row: 3, type: 'special' }],
@@ -166,10 +166,11 @@ const engKeys = new Map([
   ['right', { main: 'right', row: 4, type: 'special' }],
 ]);
 
-const keyboard = new Keyboard();
 const textAreaHtml = '<textarea class="textarea"/>';
+helper.appendToFrontOfBody(textAreaHtml);
+
+const keyboard = new Keyboard();
 
 keyboard.createKeys(engKeys);
 keyboard.createHtml();
-
-helper.appendToFrontOfBody(textAreaHtml);
+keyboard.addEventListeners();

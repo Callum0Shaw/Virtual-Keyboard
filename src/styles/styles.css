@@ -69,22 +69,65 @@ h6 {
 #__next {
   isolation: isolate;
 }
+/*** VARIABLES ***/
 
+:root {
+  --main: #2c666e;
+  --black: #0a090c;
+  --white: #f0edee;
+  --dark: #07393c;
+  --dark-light: #15afb7;
+  --highlight: #90ddf0;
+}
 /*** GENERAL ***/
 
+body {
+  color: var(--black);
+  background-color: var(--main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.textarea {
+  max-width: 600px;
+  width: 80%;
+  overflow: auto;
+  height: 240px;
+  margin-bottom: 40px;
+  outline: none;
+}
+.textarea:focus {
+  border: 1px solid var(--highlight);
+}
+
 .keyboard {
-  width: 860px;
+  max-width: 1080px;
 }
 .row {
   width: 100%;
   display: flex;
-  gap: 2px;
-  margin-bottom: 2px;
+  gap: 4px;
+  margin-bottom: 3px;
 }
 button {
   padding: 20px;
   flex-grow: 1;
+  color: var(--white);
+  background-color: var(--dark);
+  border: 1px solid var(--highlight);
+  border-bottom: 4px solid var(--highlight);
+  transition: all 0.2s;
+  min-width: 60px;
 }
-textarea {
-  width: 860px;
+button:hover {
+  background-color: var(--dark-light);
+}
+button:active {
+  border-bottom: 1px solid var(--highlight);
+  margin-top: 2px;
+}
+.space {
+  width: 40%;
 }

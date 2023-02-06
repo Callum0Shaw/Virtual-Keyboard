@@ -1,14 +1,20 @@
 export default class Key {
-  constructor(main, row, shift, caps) {
+  constructor(main, row, shift, cssClass = false) {
     this.main = main;
     this.row = row;
     this.shift = shift;
-    this.caps = caps;
-    this.html = `<button class="reg-key ${this.main}">${this.main}</button>`;
+    this.class = cssClass || main;
+    this.html = `<button class="reg-key ${this.class}">${this.main}</button>`;
   }
 
   addEventListener() {
-    const textArea = document.querySelector('.textArea');
-    textArea.value += this.main;
+    const textArea = document.querySelector('.textarea');
+    const position = textArea.selectionStart;
+    const head = textArea.value.slice(0, position);
+    const tail = textArea.value.slice(position);
+    const { length } = this.innerText;
+    textArea.value = head + this.innerText + tail;
+    textArea.focus();
+    textArea.setSelectionRange(position + length, position + length);
   }
 }
