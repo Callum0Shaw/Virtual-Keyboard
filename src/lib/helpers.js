@@ -27,6 +27,7 @@ function getSpecialAction(key) {
       break;
     case 'enter':
       textArea.value += '\n';
+      textArea.setSelectionRange(position + 1, position + 1);
       break;
     case 'space':
       textArea.value += ' ';
@@ -51,4 +52,27 @@ function getSpecialAction(key) {
       break;
   }
 }
-export { createRowHtml, appendToFrontOfBody, getSpecialAction };
+function handleShift(keyElements, keys, shift) {
+  keyElements.forEach((el) => {
+    const focusedKey = keys.find((x) => (
+      x.main === el.innerText || x.shift === el.innerText
+    ));
+    if (!shift) {
+      // eslint-disable-next-line no-param-reassign
+      if (focusedKey.shift) el.innerText = focusedKey.shift;
+      // eslint-disable-next-line no-param-reassign
+    } else if (focusedKey.shift) el.innerText = focusedKey.main;
+  });
+}
+
+function handleCaps(regKeys, capsLock) {
+  regKeys.forEach((el) => {
+    // eslint-disable-next-line no-param-reassign
+    if (!capsLock) el.innerText = el.innerText.toUpperCase();
+    // eslint-disable-next-line no-param-reassign
+    else el.innerText = el.innerText.toLowerCase();
+  });
+}
+export {
+  createRowHtml, appendToFrontOfBody, getSpecialAction, handleShift, handleCaps,
+};

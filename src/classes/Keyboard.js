@@ -53,32 +53,19 @@ export default class Keyboard {
       const button = document.querySelector(`.${key.class || key.main}`);
       if (key.main === 'Shift') {
         return button.addEventListener('click', () => {
-          keyElements.forEach((el) => {
-            const focusedKey = this.keys.find((x) => (
-              x.main === el.innerText || x.shift === el.innerText
-            ));
-            if (!this.shift) {
-              // eslint-disable-next-line no-param-reassign
-              if (focusedKey.shift) el.innerText = focusedKey.shift;
-              // eslint-disable-next-line no-param-reassign
-            } else if (focusedKey.shift) el.innerText = focusedKey.main;
-          });
+          helper.handleShift(keyElements, this.keys, this.shift);
           this.shift = !this.shift;
         });
       }
       if (key.main === 'capsLock') {
         return button.addEventListener('click', () => {
-          regKeys.forEach((el) => {
-            // eslint-disable-next-line no-param-reassign
-            if (!this.capsLock) el.innerText = el.innerText.toUpperCase();
-            // eslint-disable-next-line no-param-reassign
-            else el.innerText = el.innerText.toLowerCase();
-          });
+          helper.handleCaps(regKeys, this.capsLock);
           this.capsLock = !this.capsLock;
         });
       }
       button.addEventListener('click', key.addEventListener);
     });
+
     // add keyboard event
     document.querySelector('body').addEventListener('keydown', (e) => {
       e.preventDefault();
