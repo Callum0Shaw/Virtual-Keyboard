@@ -188,7 +188,7 @@ const engKeys = new Map([
     main: 'Ctrl', row: 4, type: 'special', class: 'ControlRight',
   }],
   ['left', {
-    main: 'left', row: 4, type: 'special', class: 'AorrowLeft',
+    main: 'left', row: 4, type: 'special', class: 'ArrowLeft',
   }],
   ['down', {
     main: 'down', row: 4, type: 'special', class: 'ArrowDown',
